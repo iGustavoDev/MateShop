@@ -270,7 +270,15 @@ public class UIManager : MonoBehaviour
 
         if (textoFimDeJogo != null && GameManager.instance != null)
         {
-            textoFimDeJogo.text = $"Acertos: {acertos}/{GameManager.instance.MetaEntregas}\nErros: {erros}/{GameManager.instance.MaxErros}";
+            string melhorTempo = GameManager.instance.TemMelhorTempoRegistrado
+                ? FormatarTempo(GameManager.instance.MelhorTempoRegistrado)
+                : "--:--";
+
+            textoFimDeJogo.text =
+                $"Acertos: {acertos}/{GameManager.instance.MetaEntregas}\n" +
+                $"Erros: {erros}/{GameManager.instance.MaxErros}\n" +
+                $"Tempo total: {FormatarTempo(GameManager.instance.TempoPartidaAtual)}\n" +
+                $"Melhor tempo: {melhorTempo}";
         }
 
         if (textoBotaoPrimarioFimDeJogo != null)
@@ -448,6 +456,14 @@ public class UIManager : MonoBehaviour
 
         GameManager.instance.OnColetaAtualizada -= AtualizarPainelItemColetado;
         GameManager.instance.OnColetaAtualizada += AtualizarPainelItemColetado;
+    }
+
+    private string FormatarTempo(float tempoEmSegundos)
+    {
+        int minutos = Mathf.FloorToInt(tempoEmSegundos / 60f);
+        int segundos = Mathf.FloorToInt(tempoEmSegundos % 60f);
+
+        return $"{minutos:00}:{segundos:00}";
     }
 
 #if UNITY_EDITOR
