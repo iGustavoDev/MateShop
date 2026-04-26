@@ -179,7 +179,10 @@ public class PlayerController : MonoBehaviour
 
     private void TentarRemoverItemColetado()
     {
-        if (GameManager.instance == null)
+        if (GameManager.instance == null || _itemEmFoco == null || _itemEmFoco.ItemData == null)
+            return;
+
+        if (!GameManager.instance.SaoMesmoItem(GameManager.instance.ItemColetadoAtual, _itemEmFoco.ItemData))
             return;
 
         GameManager.instance.RemoverItem();
