@@ -637,7 +637,9 @@ Movement:
 
 Interaction:
 - `E` to collect focused item
+- hold `E` for a short delay to activate continuous collection
 - `Q` to remove one unit from current collected stack only when near the matching item
+- hold `Q` for a short delay to remove continuously while near the matching item
 - `Shift` to run
 
 Note:
@@ -695,5 +697,3 @@ The current architecture is already organized around:
 - persistent score tracking for successes and mistakes
 
 Any future changes should preserve those pillars unless intentionally redesigning the core game loop.
-
-
