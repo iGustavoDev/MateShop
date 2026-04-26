@@ -12,7 +12,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private float multiplicadorCorrida = 1.4f;
 
+    [Header("Coleta")]
+    [SerializeField] private float tempoParaAtivarColetaRapida = 0.65f;
+    [SerializeField] private float intervaloColetaSegurando = 0.095f;
+    [SerializeField] private float intervaloRemocaoSegurando = 0.095f;
+
     private bool _correndo;
+    private float _proximoTempoColeta;
+    private float _proximoTempoRemocao;
+    private float _tempoInicioTeclaColeta = -1f;
+    private float _tempoInicioTeclaRemocao = -1f;
 
     [Header("Interacao")]
     [SerializeField] private BalaoColetaUI balaoColetaUI;
@@ -99,11 +108,43 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             TentarColetarItemEmFoco();
+            _tempoInicioTeclaColeta = Time.time;
+            _proximoTempoColeta = Time.time + tempoParaAtivarColetaRapida;
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            _tempoInicioTeclaColeta = -1f;
+        }
+
+        if (Input.GetKey(KeyCode.E) &&
+            _tempoInicioTeclaColeta >= 0f &&
+            Time.time - _tempoInicioTeclaColeta >= tempoParaAtivarColetaRapida &&
+            Time.time >= _proximoTempoColeta)
+        {
+            TentarColetarItemEmFoco();
+            _proximoTempoColeta = Time.time + intervaloColetaSegurando;
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
             TentarRemoverItemColetado();
+            _tempoInicioTeclaRemocao = Time.time;
+            _proximoTempoRemocao = Time.time + tempoParaAtivarColetaRapida;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            _tempoInicioTeclaRemocao = -1f;
+        }
+
+        if (Input.GetKey(KeyCode.Q) &&
+            _tempoInicioTeclaRemocao >= 0f &&
+            Time.time - _tempoInicioTeclaRemocao >= tempoParaAtivarColetaRapida &&
+            Time.time >= _proximoTempoRemocao)
+        {
+            TentarRemoverItemColetado();
+            _proximoTempoRemocao = Time.time + intervaloRemocaoSegurando;
         }
     }
 

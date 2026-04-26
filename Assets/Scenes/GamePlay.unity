@@ -42262,6 +42262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   playerSpeed: 5
   multiplicadorCorrida: 1.4
+  intervaloColetaSegurando: 0.1
+  intervaloRemocaoSegurando: 0.1
   balaoColetaUI: {fileID: 667824010}
   visualRoot: {fileID: 1023958817}
 --- !u!61 &841156770
