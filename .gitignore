@@ -1,0 +1,76 @@
+# =========================
+# UNITY GENERATED FOLDERS
+# =========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# =========================
+# UNITY CACHE
+# =========================
+MemoryCaptures/
+Recordings/
+
+# =========================
+# VISUAL STUDIO / C#
+# =========================
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# =========================
+# VS CODE
+# =========================
+.vscode/
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# UNITY AUTO GENERATED FILES
+# =========================
+*.apk
+*.aab
+*.unitypackage
+
+# =========================
+# ADDRESSABLES / BUILD CACHE
+# =========================
+ServerData/
+StreamingAssets/aa/
+
+# =========================
+# DOTS / BURST CACHE
+# =========================
+*.burst
+
+# =========================
+# IL2CPP BUILD FILES
+# =========================
+il2cppOutput/
+
+# =========================
+# OPTIONAL (depende do projeto)
+# =========================
+# Se estiver usando Firebase, logs, etc
+*.log
+*.zip

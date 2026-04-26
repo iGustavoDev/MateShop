@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f013f0e8824fb98fa3a6bb79517c18, type: 3}
+  m_Name: Item_Bolo_Chocolate
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: bolo-chocolate
+  nomeExibicao: Bolo de Chocolate
+  sprite: {fileID: -2274865190711063104, guid: d5ff995d504b57c42bb2241d7d4573a0, type: 3}

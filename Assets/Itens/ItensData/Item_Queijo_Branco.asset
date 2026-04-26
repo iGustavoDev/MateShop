@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f013f0e8824fb98fa3a6bb79517c18, type: 3}
+  m_Name: Item_Queijo_Branco
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  id: queijo-branco
+  nomeExibicao: Queijo Branco
+  sprite: {fileID: -8334165245824008643, guid: c38f0f383e4c999409f104fa525972bd, type: 3}
