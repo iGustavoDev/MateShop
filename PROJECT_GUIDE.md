@@ -370,6 +370,8 @@ Responsibilities:
 - Track current errors.
 - Cap errors at `5`.
 - Track whether the run has already ended.
+- Track total gameplay time for the current run.
+- Persist the fastest successful completion time on the local machine.
 - Expose the score state to UI.
 
 Current display:
@@ -585,12 +587,12 @@ Purpose:
 Current behavior:
 - Victory:
   - title indicates the player won
-  - text shows current successes and errors
+  - text shows current successes, errors, total run time, and best local time
   - primary button text: `Jogar novamente`
   - secondary button text: `Voltar ao menu`
 - Defeat:
   - title indicates the player lost
-  - text shows current successes and errors
+  - text shows current successes, errors, total run time, and best local time
   - primary button text: `Tentar novamente`
   - secondary button text: `Voltar ao menu`
 - Opening this panel pauses the game with `Time.timeScale = 0`.

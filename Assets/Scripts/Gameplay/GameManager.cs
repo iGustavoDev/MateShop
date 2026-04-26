@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    private const string PLAYER_PREFS_MELHOR_TEMPO_PREFIXO = "MateShop_MelhorTempo_";
     private const int MAX_ITENS_COLETADOS = 99;
     private const int MAX_ERROS = 5;
     private const int META_FACIL = 30;
@@ -31,6 +32,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int errosAtuais = 0;
     [SerializeField] private bool jogoEncerrado = false;
 
+    [Header("Tempo de Partida")]
+    [SerializeField] private float tempoPartidaAtual = 0f;
+
     public event System.Action OnColetaAtualizada;
 
     public int ItensColetados => itensColetados;
@@ -42,6 +46,9 @@ public class GameManager : MonoBehaviour
     public int MaxErros => MAX_ERROS;
     public int MetaEntregas => ObterMetaEntregas();
     public bool JogoEncerrado => jogoEncerrado;
+    public float TempoPartidaAtual => tempoPartidaAtual;
+    public bool TemMelhorTempoRegistrado => PlayerPrefs.HasKey(ObterChaveMelhorTempo());
+    public float MelhorTempoRegistrado => PlayerPrefs.GetFloat(ObterChaveMelhorTempo(), 0f);
 
     private void Awake()
     {
@@ -51,6 +58,14 @@ public class GameManager : MonoBehaviour
         {
             balaoPedidoUI.Esconder();
         }
+    }
+
+    private void Update()
+    {
+        if (jogoEncerrado)
+            return;
+
+        tempoPartidaAtual += Time.deltaTime;
     }
 
     public void GerarPedido()
@@ -172,6 +187,7 @@ public class GameManager : MonoBehaviour
         if (entregasBemSucedidas >= MetaEntregas)
         {
             jogoEncerrado = true;
+            RegistrarMelhorTempoSeNecessario();
         }
     }
 
@@ -219,5 +235,21 @@ public class GameManager : MonoBehaviour
             default:
                 return META_FACIL;
         }
+    }
+
+    private void RegistrarMelhorTempoSeNecessario()
+    {
+        string chave = ObterChaveMelhorTempo();
+
+        if (!PlayerPrefs.HasKey(chave) || tempoPartidaAtual < PlayerPrefs.GetFloat(chave))
+        {
+            PlayerPrefs.SetFloat(chave, tempoPartidaAtual);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private string ObterChaveMelhorTempo()
+    {
+        return PLAYER_PREFS_MELHOR_TEMPO_PREFIXO + GameSettings.SelectedDifficulty;
     }
 }
