@@ -3,6 +3,12 @@
 ## Overview
 `MateShop` is a 2D top-down educational Unity game.
 
+Repository-level entry documentation:
+- `README.md`
+
+Academic context:
+- This project was developed as an academic project for the `TADS` course (`Tecnologia em Análise e Desenvolvimento de Sistemas`).
+
 Core loop:
 1. An NPC arrives at the counter.
 2. The NPC shows an item image and a math operation in a global request bubble.
